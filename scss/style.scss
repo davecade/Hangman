@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Nerko+One&display=swap');
+@import 'variables';
+@import 'utilities';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    background: url('../images/4305653.jpg') no-repeat center/cover;
+    font-family: 'Nerko One';
+}
+
+#app {
+
+    .container {
+        max-width: $app-width;
+        margin: 5rem auto;
+
+        .hangman {
+            height: 700px;
+            background: $app-background;
+            color: $text-color;
+            @extend %flex-column;
+            justify-content: start;
+
+            .title {
+                text-transform: uppercase;
+                font-size: 3rem;
+            }
+
+            .btn {
+                @extend %btn-shared;
+                @extend %flex-column;
+                margin: .5rem;
+                transition: border .3s ease;
+                font-size: 1.3rem;
+                cursor: pointer;
+                
+                &:hover {
+                    border-color:  #db06d6;
+                }
+            }
+        }
+    }
+}

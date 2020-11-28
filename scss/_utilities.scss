@@ -1,0 +1,16 @@
+// -- Utilities
+
+%flex-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+%btn-shared {
+    height: 50px;
+    width: 130px;
+    border: 2px solid $border-color;
+    background: $app-background;
+    color: $text-color;
+}
