@@ -1,17 +1,44 @@
-@import url("https://fonts.googleapis.com/css2?family=Nerko+One&display=swap");
-#app .container .hangman, #app .container .hangman .btn {
+@import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
+#app .container .hangman .start-screen .btn, #app .container .hangman .instructions .btn, #app, #app .container .hangman .start-screen {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-#app .container .hangman .btn {
+#app .container .hangman .start-screen .btn, #app .container .hangman .instructions .btn {
   height: 50px;
   width: 130px;
   border: 2px solid #fffbff;
   background: #181529;
-  color: #5ba7eb;
+  color: #00f5fd;
+  margin: .5rem 0;
+  transition: border .3s ease;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+#app .container .hangman .start-screen .btn:hover, #app .container .hangman .instructions .btn:hover {
+  border-color: #db06d6;
+}
+
+ul {
+  margin: 0.75em 0;
+  padding: 0 1em;
+  list-style: none;
+}
+
+li:before {
+  content: "";
+  border-color: transparent #111;
+  border-style: solid;
+  border-width: 0.35em 0 0.35em 0.45em;
+  display: block;
+  height: 0;
+  width: 0;
+  left: -1em;
+  top: 0.9em;
+  position: relative;
 }
 
 * {
@@ -21,36 +48,81 @@
 }
 
 body {
+  position: relative;
   height: 100vh;
   background: url("../images/4305653.jpg") no-repeat center/cover;
-  font-family: 'Nerko One';
+  font-family: 'Righteous', sans-serif;
+}
+
+h1 {
+  margin-bottom: 1rem;
+}
+
+#app {
+  z-index: 1000;
+  height: 100vh;
 }
 
 #app .container {
-  max-width: 780px;
-  margin: 5rem auto;
+  width: 780px;
 }
 
 #app .container .hangman {
   height: 700px;
   background: #181529;
-  color: #5ba7eb;
+  color: #00f5fd;
+  padding: 1rem;
+}
+
+#app .container .hangman .start-screen {
   justify-content: start;
 }
 
-#app .container .hangman .title {
+#app .container .hangman .start-screen .title {
   text-transform: uppercase;
   font-size: 3rem;
 }
 
-#app .container .hangman .btn {
-  margin: .5rem;
-  transition: border .3s ease;
-  font-size: 1.3rem;
-  cursor: pointer;
+#app .container .hangman .instructions h1 {
+  text-align: center;
+  font-size: 3rem;
 }
 
-#app .container .hangman .btn:hover {
-  border-color: #db06d6;
+#app .container .hangman .instructions ul {
+  margin-top: 1rem;
+}
+
+#app .container .hangman .instructions ul li {
+  color: #fffbff;
+  display: flex;
+  align-items: center;
+}
+
+#app .container .hangman .instructions ul li i {
+  color: #00f5fd;
+  font-size: 1.5rem;
+  margin-right: .5rem;
+  margin-left: 1rem;
+  align-self: flex-start;
+}
+
+#app .container .hangman .instructions .btn {
+  margin: 0 auto;
+}
+
+#app .container .overlay {
+  position: absolute;
+  /* Sit on top of the page content */
+  width: 100%;
+  /* Full width (cover the whole page) */
+  height: 100%;
+  /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  /* Black background with opacity */
+  z-index: -1;
 }
 /*# sourceMappingURL=style.css.map */

@@ -8,9 +8,37 @@
 }
 
 %btn-shared {
+    @extend %flex-column;
     height: 50px;
     width: 130px;
     border: 2px solid $border-color;
     background: $app-background;
     color: $text-color;
+    margin: .5rem 0;
+    transition: border .3s ease;
+    font-size: 1.2rem;
+    cursor: pointer;
+    
+
+    &:hover {
+        border-color:  #db06d6;
+    }
+}
+
+ul {
+    margin: 0.75em 0;
+    padding: 0 1em;
+    list-style: none;
+}
+li:before { 
+    content: "";
+    border-color: transparent #111;
+    border-style: solid;
+    border-width: 0.35em 0 0.35em 0.45em;
+    display: block;
+    height: 0;
+    width: 0;
+    left: -1em;
+    top: 0.9em;
+    position: relative;
 }
