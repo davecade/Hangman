@@ -1,9 +1,10 @@
+import How from "./how.js"
 
 const Home = (()=> {
 
     // -- Render the DOM
     const $hangman = document.querySelector(".hangman")
-    const $newGameButton = document.querySelector(".new-game")
+
     
     // -- Initialize
     const init = () => {
@@ -13,7 +14,18 @@ const Home = (()=> {
 
     // -- Event Listeners
     const listeners = () => {
-        
+        const $newGameButton = document.querySelector(".new-game")
+        const $instructions = document.querySelector(".instructions")
+
+        $newGameButton.addEventListener('click', () => {
+            console.log("New Game button clicked")
+        })
+
+        $instructions.addEventListener('click', () => {
+            How.init();
+        })
+
+
     }
 
     const render = () => {
