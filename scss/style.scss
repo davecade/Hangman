@@ -15,8 +15,10 @@ body {
     font-family: 'Righteous', sans-serif;
 }
 
-h1 {
+.title {
     margin-bottom: 1rem;
+    text-transform: uppercase;
+    font-size: 3rem;
 }
 
 #app {
@@ -36,10 +38,6 @@ h1 {
             .start-screen {
                 @extend %flex-column;
                 justify-content: start;
-                .title {
-                    text-transform: uppercase;
-                    font-size: 3rem;
-                }
     
                 .btn {
                     @extend %btn-shared;
@@ -63,12 +61,25 @@ h1 {
     
                         i {
                             color: $text-color;
-                            font-size: 1.5rem;
+                            font-size: 1rem;
                             margin-right: .5rem;
                             margin-left: 1rem;
                             align-self: flex-start;
                         }
-                    }    
+                    }
+                    
+                    li:before { 
+                        content: "";
+                        border-color: transparent #111;
+                        border-style: solid;
+                        border-width: 0.35em 0 0.35em 0.45em;
+                        display: block;
+                        height: 0;
+                        width: 0;
+                        left: -1em;
+                        top: 0.9em;
+                        position: relative;
+                    }
                 }
 
                 .btn {
@@ -77,6 +88,52 @@ h1 {
                     margin: 0 auto;
                 }
             
+            }
+
+            .game {
+                @extend %flex-column;
+
+                .guessing-word {
+                    font-size: 2rem;
+                    margin: 3rem 0 1.5rem 0;
+                    color: $highlight-color;
+                }
+
+                .hangman-board {
+                    border: 2px solid $border-color;
+                }
+
+                .hangman-letters {
+                    display: flex;
+                    justify-content: center;
+                    max-width: $app-width;
+                    flex-wrap: wrap;
+
+                    li {
+                        list-style: none;
+                        padding: .5rem 1rem;
+                        margin: 0.3rem;
+                        background: $border-color;
+                        color: $app-background;
+                        cursor: pointer;
+
+                        &:hover {
+                            background: $highlight-color;
+                        }
+                    }
+
+                    .selected {
+                        background: gray;
+                        &:hover {
+                            background: gray;
+                        }
+                        cursor: default;
+                    }
+                }
+
+                .btn {
+                    @extend %btn-shared;
+                }
             }
         }
 

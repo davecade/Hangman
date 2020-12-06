@@ -1,4 +1,5 @@
 import How from "./how.js"
+import Game from "./game.js"
 
 const Home = (()=> {
 
@@ -18,7 +19,7 @@ const Home = (()=> {
         const $instructions = document.querySelector(".instructions")
 
         $newGameButton.addEventListener('click', () => {
-            console.log("New Game button clicked")
+            Game.init();
         })
 
         $instructions.addEventListener('click', () => {
