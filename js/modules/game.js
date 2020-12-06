@@ -1,4 +1,5 @@
 import Home from "./home.js"
+import { sound } from "../data/sound.js"
 
 const Game = (()=> {
 
@@ -36,6 +37,7 @@ const Game = (()=> {
             } else if(event.target.matches('.main-menu')) {
                 Home.init();
             }
+            sound.click.play();
         })
     }
 

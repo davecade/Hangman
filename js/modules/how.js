@@ -1,4 +1,5 @@
 import Home from "./home.js"
+import { sound } from "../data/sound.js"
 
 const How = (()=> {
 
@@ -16,6 +17,7 @@ const How = (()=> {
         const $mainMenuButton = document.querySelector(".main-menu")
         $mainMenuButton.addEventListener("click", () => {
             Home.init();
+            sound.click.play();
         })
     }
 

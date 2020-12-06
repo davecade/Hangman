@@ -17,6 +17,7 @@
     margin: .5rem 0;
     transition: border .3s ease;
     font-size: 1.2rem;
+    outline: none;
     cursor: pointer;
     
 
@@ -29,4 +30,8 @@ ul {
     margin: 0.75em 0;
     padding: 0 1em;
     list-style: none;
+}
+
+.btn {
+    @extend %btn-shared;
 }

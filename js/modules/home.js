@@ -1,5 +1,6 @@
 import How from "./how.js"
 import Game from "./game.js"
+import { sound } from "../data/sound.js"
 
 const Home = (()=> {
 
@@ -20,10 +21,12 @@ const Home = (()=> {
 
         $newGameButton.addEventListener('click', () => {
             Game.init();
+            sound.click.play();
         })
 
         $instructions.addEventListener('click', () => {
             How.init();
+            sound.click.play();
         })
 
 

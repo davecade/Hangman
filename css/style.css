@@ -1,12 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
-#app .container .hangman .start-screen .btn, #app .container .hangman .instructions .btn, #app .container .hangman .game .btn, #app, #app .container .hangman .start-screen, #app .container .hangman .game {
+.btn, #app .container .hangman .start-screen .btn, #app .container .hangman .instructions .btn, #app, #app .container .hangman .start-screen, #app .container .hangman .game, #app .container .hangman .end {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-#app .container .hangman .start-screen .btn, #app .container .hangman .instructions .btn, #app .container .hangman .game .btn {
+.btn, #app .container .hangman .start-screen .btn, #app .container .hangman .instructions .btn {
   height: 50px;
   width: 130px;
   border: 2px solid #fffbff;
@@ -15,10 +15,11 @@
   margin: .5rem 0;
   transition: border .3s ease;
   font-size: 1.2rem;
+  outline: none;
   cursor: pointer;
 }
 
-#app .container .hangman .start-screen .btn:hover, #app .container .hangman .instructions .btn:hover, #app .container .hangman .game .btn:hover {
+.btn:hover, #app .container .hangman .start-screen .btn:hover, #app .container .hangman .instructions .btn:hover {
   border-color: #db06d6;
 }
 
@@ -145,6 +146,14 @@ body {
 
 #app .container .hangman .game .hangman-letters .selected:hover {
   background: gray;
+}
+
+#app .container .hangman .end h2 {
+  color: #fffbff;
+}
+
+#app .container .hangman .end .btn {
+  margin-top: 1.5rem;
 }
 
 #app .container .overlay {
