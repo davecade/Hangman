@@ -1,3 +1,5 @@
+import Home from "./home.js"
+
 const Game = (()=> {
 
     // -- Cache the DOM
@@ -25,10 +27,17 @@ const Game = (()=> {
 
     // -- Event Listeners
     const listeners = () => {
+        const $mainMenuButton = document.querySelector(".main-menu")
+        
         $hangman.addEventListener('click', event => {
             if(event.target.parentNode.matches('.hangman-letters')) {
                 check(event.target.innerHTML.toLowerCase())
             }
+        })
+
+        $mainMenuButton.addEventListener("click", () => {
+            console.log("CAME HERE")
+            Home.init();
         })
     }
 
@@ -53,16 +62,16 @@ const Game = (()=> {
     }
 
     const check = guess => {
-        if(alreadyTaken(guess)) return;
-        state.selectedLetters.push(guess)
+        if(!alreadyTaken(guess)) {
+            state.selectedLetters.push(guess)
 
-        if(answer.includes(guess)) {
-            updateGuessingWord(guess)
-        } else {
-            lives--;
-        }
-        
-        render();
+            if(answer.includes(guess)) {
+                updateGuessingWord(guess)
+            } else {
+                lives--;
+            }
+            render();
+        } 
     }
 
     const render = () => {
@@ -76,7 +85,7 @@ const Game = (()=> {
                 <ul class="hangman-letters">
                     ${createLetters()}
                 </ul>
-                <button class="btn">Main Menu</button>
+                <button class="btn main-menu">Main Menu</button>
             </div>
         `
         $hangman.innerHTML = markup;
