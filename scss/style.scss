@@ -116,6 +116,7 @@ body {
                         background: $border-color;
                         color: $app-background;
                         cursor: pointer;
+                        transition: background .2s;
 
                         &:hover {
                             background: $highlight-color;

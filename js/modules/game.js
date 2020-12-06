@@ -44,7 +44,7 @@ const Game = (()=> {
         state.selectedLetters = []
     }
 
-    const alreadyTaken = letter => {
+    const alreadySelected = letter => {
         return state.selectedLetters.includes(letter)
     }
 
@@ -59,13 +59,13 @@ const Game = (()=> {
     const createLetters = () => {
         let markup = ''
         alphabet.forEach(letter => {
-            markup += `<li ${alreadyTaken(letter) ? "class='selected'" : ""}>${letter.toUpperCase()}</li>`
+            markup += `<li ${alreadySelected(letter) ? "class='selected'" : ""}>${letter.toUpperCase()}</li>`
         })
         return markup
     }
 
     const check = guess => {
-        if(!alreadyTaken(guess)) {
+        if(!alreadySelected(guess)) {
             state.selectedLetters.push(guess)
 
             if(answer.includes(guess)) {

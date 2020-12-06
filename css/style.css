@@ -131,6 +131,7 @@ body {
   background: #fffbff;
   color: #181529;
   cursor: pointer;
+  transition: background .2s;
 }
 
 #app .container .hangman .game .hangman-letters li:hover {
