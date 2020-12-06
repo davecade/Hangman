@@ -16,6 +16,7 @@ const Game = (()=> {
     const init = () => {
         answer = words[Math.floor(Math.random()*words.length)].split("")
         guessingWord = Array(answer.length).fill('_')
+        resetGame();
         render();
         listeners();
     }
@@ -27,18 +28,20 @@ const Game = (()=> {
 
     // -- Event Listeners
     const listeners = () => {
-        const $mainMenuButton = document.querySelector(".main-menu")
-        
+    
         $hangman.addEventListener('click', event => {
             if(event.target.parentNode.matches('.hangman-letters')) {
                 check(event.target.innerHTML.toLowerCase())
+                render();
+            } else if(event.target.matches('.main-menu')) {
+                Home.init();
             }
         })
+    }
 
-        $mainMenuButton.addEventListener("click", () => {
-            console.log("CAME HERE")
-            Home.init();
-        })
+    const resetGame = () => {
+        lives = 10;
+        state.selectedLetters = []
     }
 
     const alreadyTaken = letter => {
@@ -70,7 +73,6 @@ const Game = (()=> {
             } else {
                 lives--;
             }
-            render();
         } 
     }
 

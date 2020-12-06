@@ -14,7 +14,6 @@ const How = (()=> {
     // -- Event Listeners
     const listeners = () => {
         const $mainMenuButton = document.querySelector(".main-menu")
-
         $mainMenuButton.addEventListener("click", () => {
             Home.init();
         })
