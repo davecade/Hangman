@@ -73,6 +73,9 @@ const Game = (()=> {
 
             if(answer.includes(guess)) {
                 updateGuessingWord(guess)
+                if(guessingWord.join("") === answer.join("")) {
+                    End.init();
+                }
             } else {
                 state.lives--;
                 if(state.lives < 1) {
@@ -100,7 +103,8 @@ const Game = (()=> {
     }
 
     return {
-        init
+        init,
+        state
     }
 })();
 
