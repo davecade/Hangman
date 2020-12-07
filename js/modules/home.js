@@ -1,13 +1,13 @@
 import How from "./how.js"
 import Game from "./game.js"
-import { sound } from "../data/sound.js"
+import {sound} from "../data/sound.js"
 
-const Home = (()=> {
+const Home = (() => {
 
     // -- Render the DOM
     const $hangman = document.querySelector(".hangman")
 
-    
+
     // -- Initialize
     const init = () => {
         render();
@@ -28,8 +28,6 @@ const Home = (()=> {
             How.init();
             sound.click.play();
         })
-
-
     }
 
     const render = () => {

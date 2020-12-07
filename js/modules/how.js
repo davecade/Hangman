@@ -1,7 +1,7 @@
 import Home from "./home.js"
-import { sound } from "../data/sound.js"
+import {sound} from "../data/sound.js"
 
-const How = (()=> {
+const How = (() => {
 
     // -- Cache the DOM
     const $hangman = document.querySelector(".hangman")

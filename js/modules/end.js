@@ -1,7 +1,7 @@
 import Game from './game.js'
 import Home from './home.js';
 
-const End = (()=> {
+const End = (() => {
 
     // -- Cache the DOM
     const $hangman = document.querySelector(".hangman")
@@ -27,9 +27,9 @@ const End = (()=> {
 
     // -- Render
     const render = () => {
-        if(Game.state.lives > 0) {
+        if (Game.state.lives > 0) {
             state.win = true;
-        } 
+        }
 
         let markup = `
             <div class="end">

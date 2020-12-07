@@ -1,8 +1,8 @@
 import Home from "./home.js"
-import { sound } from "../data/sound.js"
+import {sound} from "../data/sound.js"
 import End from "./end.js";
 
-const Game = (()=> {
+const Game = (() => {
 
     // -- Cache the DOM
     const $hangman = document.querySelector(".hangman")
@@ -14,7 +14,7 @@ const Game = (()=> {
 
     // -- Initialize
     const init = () => {
-        state.answer = words[Math.floor(Math.random()*words.length)].split("")
+        state.answer = words[Math.floor(Math.random() * words.length)].split("")
         guessingWord = Array(state.answer.length).fill('_')
         resetGame();
         render();
@@ -30,13 +30,13 @@ const Game = (()=> {
 
     // -- Event Listeners
     const listeners = () => {
-    
+
         $hangman.addEventListener('click', event => {
-            if(event.target.parentNode.matches('.hangman-letters')) {
+            if (event.target.parentNode.matches('.hangman-letters')) {
                 check(event.target.innerHTML.toLowerCase())
                 sound.click.play();
                 render();
-            } else if(event.target.matches('.main-menu')) {
+            } else if (event.target.matches('.main-menu')) {
                 Home.init();
                 sound.click.play();
             }
@@ -55,7 +55,7 @@ const Game = (()=> {
 
     const updateGuessingWord = guess => {
         state.answer.forEach((letter, index) => {
-            if(letter===guess.toLowerCase()) {
+            if (letter === guess.toLowerCase()) {
                 guessingWord[index] = guess.toLowerCase()
             }
         })
@@ -70,21 +70,21 @@ const Game = (()=> {
     }
 
     const check = guess => {
-        if(!alreadySelected(guess)) {
+        if (!alreadySelected(guess)) {
             state.selectedLetters.push(guess)
-            if(state.answer.includes(guess)) {
+            if (state.answer.includes(guess)) {
                 updateGuessingWord(guess)
 
             } else {
                 state.lives--;
             }
-        } 
+        }
     }
 
     const checkGameOver = () => {
-        if(guessingWord.join("") === state.answer.join("")) {
+        if (guessingWord.join("") === state.answer.join("")) {
             End.init();
-        } else if(state.lives < 1) {
+        } else if (state.lives < 1) {
             End.init();
         }
     }

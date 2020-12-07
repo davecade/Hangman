@@ -28,7 +28,7 @@ body {
 
     .container {
         width: $app-width;
-        
+
         .hangman {
             height: 700px;
             background: $app-background;
@@ -38,10 +38,10 @@ body {
             .start-screen {
                 @extend %flex-column;
                 justify-content: start;
-    
+
                 .btn {
                     @extend %btn-shared;
-                    
+
                 }
             }
 
@@ -58,7 +58,7 @@ body {
                         color: $border-color;
                         display: flex;
                         align-items: center;
-    
+
                         i {
                             color: $text-color;
                             font-size: 1rem;
@@ -67,8 +67,8 @@ body {
                             align-self: flex-start;
                         }
                     }
-                    
-                    li:before { 
+
+                    li:before {
                         content: "";
                         border-color: transparent #111;
                         border-style: solid;
@@ -87,7 +87,7 @@ body {
                     @extend %flex-column;
                     margin: 0 auto;
                 }
-            
+
             }
 
             .game {
@@ -125,9 +125,11 @@ body {
 
                     .selected {
                         background: gray;
+
                         &:hover {
                             background: gray;
                         }
+
                         cursor: default;
                     }
 
@@ -153,14 +155,18 @@ body {
         }
 
         .overlay {
-            position: absolute; /* Sit on top of the page content */
-            width: 100%; /* Full width (cover the whole page) */
-            height: 100%; /* Full height (cover the whole page) */
+            position: absolute;
+            /* Sit on top of the page content */
+            width: 100%;
+            /* Full width (cover the whole page) */
+            height: 100%;
+            /* Full height (cover the whole page) */
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: rgba(0,0,0,0.2); /* Black background with opacity */
+            background-color: rgba(0, 0, 0, 0.2);
+            /* Black background with opacity */
             z-index: -1;
         }
     }
