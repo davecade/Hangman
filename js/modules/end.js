@@ -1,9 +1,19 @@
 import Game from './game.js'
+import Home from './home.js';
 
 const End = (()=> {
 
     // -- Cache the DOM
     const $hangman = document.querySelector(".hangman")
+
+    // --Event Listeners
+    const listeners = () => {
+        const $mainMenu = document.querySelector(".main-menu")
+        $mainMenu.addEventListener('click', () => {
+            Game.resetGame();
+            Home.init();
+        })
+    }
 
     // -- Initialize
     const init = () => {
@@ -26,15 +36,15 @@ const End = (()=> {
                 <h1 class="title">Hangman</h1>
                 <h2>You ${state.win ? "Win" : "Lose"}!</h2>
                 <h2>The word is: CAT</h2>
-                <button class="btn">Main Menu</button>
+                <button class="btn main-menu">Main Menu</button>
             </div>
         `
-
         $hangman.innerHTML = markup;
     }
 
     return {
-        init
+        init,
+        state
     }
 })();
 

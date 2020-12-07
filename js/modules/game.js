@@ -34,17 +34,19 @@ const Game = (()=> {
         $hangman.addEventListener('click', event => {
             if(event.target.parentNode.matches('.hangman-letters')) {
                 check(event.target.innerHTML.toLowerCase())
+                sound.click.play();
                 render();
             } else if(event.target.matches('.main-menu')) {
                 Home.init();
+                sound.click.play();
             }
-            sound.click.play();
         })
     }
 
     const resetGame = () => {
         state.lives = 10;
         state.selectedLetters = []
+        End.state.win = false;
     }
 
     const alreadySelected = letter => {
@@ -70,19 +72,21 @@ const Game = (()=> {
     const check = guess => {
         if(!alreadySelected(guess)) {
             state.selectedLetters.push(guess)
-
             if(answer.includes(guess)) {
                 updateGuessingWord(guess)
-                if(guessingWord.join("") === answer.join("")) {
-                    End.init();
-                }
+
             } else {
                 state.lives--;
-                if(state.lives < 1) {
-                    End.init();
-                }
             }
         } 
+    }
+
+    const checkGameOver = () => {
+        if(guessingWord.join("") === answer.join("")) {
+            End.init();
+        } else if(state.lives < 1) {
+            End.init();
+        }
     }
 
     const render = () => {
@@ -100,11 +104,13 @@ const Game = (()=> {
             </div>
         `
         $hangman.innerHTML = markup;
+        checkGameOver();
     }
 
     return {
         init,
-        state
+        state,
+        resetGame
     }
 })();
 
