@@ -1,5 +1,6 @@
 import Home from "./home.js"
 import { sound } from "../data/sound.js"
+import End from "./end.js";
 
 const Game = (()=> {
 
@@ -9,7 +10,6 @@ const Game = (()=> {
     //-- Variables
     const alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
     const words = ['apple', 'cat', 'headphones', 'sanitizer']
-    let lives = 10;
     let answer
     let guessingWord
 
@@ -25,6 +25,7 @@ const Game = (()=> {
     // -- State
     const state = {
         selectedLetters: [],
+        lives: 10
     }
 
     // -- Event Listeners
@@ -42,7 +43,7 @@ const Game = (()=> {
     }
 
     const resetGame = () => {
-        lives = 10;
+        state.lives = 10;
         state.selectedLetters = []
     }
 
@@ -73,14 +74,17 @@ const Game = (()=> {
             if(answer.includes(guess)) {
                 updateGuessingWord(guess)
             } else {
-                lives--;
+                state.lives--;
+                if(state.lives < 1) {
+                    End.init();
+                }
             }
         } 
     }
 
     const render = () => {
         let markup = `
-            <p class="lives">Lives: ${lives}</p>
+            <p class="lives">Lives: ${state.lives}</p>
             <div class="game">
                 <h1 class="title">Hangman</h1>
                 <canvas class="hangman-board" height="155px"></canvas>
