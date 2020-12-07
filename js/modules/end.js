@@ -35,7 +35,7 @@ const End = (()=> {
             <div class="end">
                 <h1 class="title">Hangman</h1>
                 <h2>You ${state.win ? "Win" : "Lose"}!</h2>
-                <h2>The word is: CAT</h2>
+                <h2>The word is: <span class="answer">${Game.state.answer.join("")}</span></h2>
                 <button class="btn main-menu">Main Menu</button>
             </div>
         `

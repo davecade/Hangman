@@ -152,6 +152,10 @@ body {
   color: #fffbff;
 }
 
+#app .container .hangman .end h2 .answer {
+  color: #c252df;
+}
+
 #app .container .hangman .end .btn {
   margin-top: 1.5rem;
 }

@@ -10,13 +10,12 @@ const Game = (()=> {
     //-- Variables
     const alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
     const words = ['apple', 'cat', 'headphones', 'sanitizer']
-    let answer
     let guessingWord
 
     // -- Initialize
     const init = () => {
-        answer = words[Math.floor(Math.random()*words.length)].split("")
-        guessingWord = Array(answer.length).fill('_')
+        state.answer = words[Math.floor(Math.random()*words.length)].split("")
+        guessingWord = Array(state.answer.length).fill('_')
         resetGame();
         render();
         listeners();
@@ -25,7 +24,8 @@ const Game = (()=> {
     // -- State
     const state = {
         selectedLetters: [],
-        lives: 10
+        lives: 10,
+        answer: null
     }
 
     // -- Event Listeners
@@ -54,7 +54,7 @@ const Game = (()=> {
     }
 
     const updateGuessingWord = guess => {
-        answer.forEach((letter, index) => {
+        state.answer.forEach((letter, index) => {
             if(letter===guess.toLowerCase()) {
                 guessingWord[index] = guess.toLowerCase()
             }
@@ -72,7 +72,7 @@ const Game = (()=> {
     const check = guess => {
         if(!alreadySelected(guess)) {
             state.selectedLetters.push(guess)
-            if(answer.includes(guess)) {
+            if(state.answer.includes(guess)) {
                 updateGuessingWord(guess)
 
             } else {
@@ -82,7 +82,7 @@ const Game = (()=> {
     }
 
     const checkGameOver = () => {
-        if(guessingWord.join("") === answer.join("")) {
+        if(guessingWord.join("") === state.answer.join("")) {
             End.init();
         } else if(state.lives < 1) {
             End.init();
