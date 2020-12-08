@@ -1,6 +1,7 @@
 import Home from "./home.js"
 import {sound} from "../data/sound.js"
 import End from "./end.js";
+import Board from "./board.js"
 
 const Game = (() => {
 
@@ -19,6 +20,7 @@ const Game = (() => {
         resetGame();
         render();
         listeners();
+        Board.init();
     }
 
     // -- State

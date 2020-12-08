@@ -30,6 +30,7 @@ const Home = (() => {
         })
     }
 
+    // -- Render
     const render = () => {
         let markup = `
             <div class="start-screen">
