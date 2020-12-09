@@ -19,14 +19,14 @@ const Game = (() => {
         guessingWord = Array(state.answer.length).fill('_')
         resetGame();
         render();
-        listeners();
         Board.init();
+        listeners();
     }
 
     // -- State
     const state = {
         selectedLetters: [],
-        lives: 10,
+        lives: 7,
         answer: null
     }
 
@@ -46,7 +46,7 @@ const Game = (() => {
     }
 
     const resetGame = () => {
-        state.lives = 10;
+        state.lives = 7;
         state.selectedLetters = []
         End.state.win = false;
     }
@@ -79,6 +79,7 @@ const Game = (() => {
 
             } else {
                 state.lives--;
+                Board.setLives(state.lives)
             }
         }
     }
@@ -105,7 +106,7 @@ const Game = (() => {
                 <button class="btn main-menu">Main Menu</button>
             </div>
         `
-        $hangman.innerHTML = markup;
+        $hangman.innerHTML = markup; 
         checkGameOver();
     }
 
