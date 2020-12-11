@@ -49,6 +49,7 @@ const Game = (() => {
         state.lives = 7;
         state.selectedLetters = []
         End.state.win = false;
+        Board.state.parts = []
     }
 
     const alreadySelected = letter => {
@@ -76,7 +77,6 @@ const Game = (() => {
             state.selectedLetters.push(guess)
             if (state.answer.includes(guess)) {
                 updateGuessingWord(guess)
-
             } else {
                 state.lives--;
                 Board.setLives(state.lives)
@@ -106,8 +106,10 @@ const Game = (() => {
                 <button class="btn main-menu">Main Menu</button>
             </div>
         `
-        $hangman.innerHTML = markup; 
+        $hangman.innerHTML = markup;
+        Board.render();
         checkGameOver();
+        
     }
 
     return {
