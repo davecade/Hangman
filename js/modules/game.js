@@ -25,6 +25,7 @@ const Game = (() => {
 
     // -- State
     const state = {
+        gameInProgress: true,
         selectedLetters: [],
         lives: 7,
         answer: null
@@ -34,7 +35,7 @@ const Game = (() => {
     const listeners = () => {
 
         $hangman.addEventListener('click', event => {
-            if (event.target.parentNode.matches('.hangman-letters')) {
+            if (event.target.parentNode.matches('.hangman-letters') && state.gameInProgress === true) {
                 check(event.target.innerHTML.toLowerCase())
                 sound.click.play();
                 render();
@@ -50,6 +51,7 @@ const Game = (() => {
         state.selectedLetters = []
         End.state.win = false;
         Board.state.parts = []
+        state.gameInProgress = true;
     }
 
     const alreadySelected = letter => {
@@ -99,7 +101,9 @@ const Game = (() => {
                 <h1 class="title">Hangman</h1>
                 <canvas class="hangman-board" height="155px"></canvas>
                 <div class="guessing-word">${guessingWord.join("")}</div>
-                <p>Pick a letter below to guess the whole word.</p>
+                <div class="display">
+                    <p>Pick a letter below to guess the whole word.</p>
+                </div>
                 <ul class="hangman-letters">
                     ${createLetters()}
                 </ul>

@@ -3,43 +3,32 @@ import Home from './home.js';
 
 const End = (() => {
 
-    // -- Cache the DOM
-    const $hangman = document.querySelector(".hangman")
-
-    // --Event Listeners
-    const listeners = () => {
-        const $mainMenu = document.querySelector(".main-menu")
-        $mainMenu.addEventListener('click', () => {
-            Game.resetGame();
-            Home.init();
-        })
+    // -- State of the game
+    const state = {
+        win: false
     }
 
     // -- Initialize
     const init = () => {
+        Game.state.gameInProgress = false;
         render();
         listeners();
     }
 
-    const state = () => {
-        win: false
-    }
-
     // -- Render
     const render = () => {
+        const $display = document.querySelector(".display")
+
         if (Game.state.lives > 0) {
             state.win = true;
         }
 
         let markup = `
             <div class="end">
-                <h1 class="title">Hangman</h1>
                 <h2>You ${state.win ? "Win" : "Lose"}!</h2>
-                <h2>The word is: <span class="answer">${Game.state.answer.join("")}</span></h2>
-                <button class="btn main-menu">Main Menu</button>
             </div>
         `
-        $hangman.innerHTML = markup;
+        $display.innerHTML = markup;
     }
 
     return {
