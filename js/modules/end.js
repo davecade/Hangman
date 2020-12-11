@@ -12,7 +12,6 @@ const End = (() => {
     const init = () => {
         Game.state.gameInProgress = false;
         render();
-        listeners();
     }
 
     // -- Render
