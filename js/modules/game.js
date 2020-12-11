@@ -109,7 +109,6 @@ const Game = (() => {
         $hangman.innerHTML = markup;
         Board.render();
         checkGameOver();
-        
     }
 
     return {
