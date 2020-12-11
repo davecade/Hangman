@@ -1,5 +1,4 @@
 import Game from './game.js'
-import Home from './home.js';
 
 const End = (() => {
 
