@@ -25,10 +25,13 @@ const End = (() => {
 
         let markup = `
             <div class="end">
-                <h2>You ${state.win ? "Win" : "Lose"}!</h2>
+                <h2 class="end-message">You ${state.win ? "Win" : "Lose"}!</h2>
             </div>
         `
         $display.innerHTML = markup;
+
+        const $message = document.querySelector(".end-message")
+        $message.style = state.win ? "color: #4dcc7d" : "color: #cc3232"
     }
 
     return {

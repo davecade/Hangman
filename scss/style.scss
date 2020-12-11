@@ -139,17 +139,8 @@ body {
 
             .end {
                 @extend %flex-column;
-
                 h2 {
                     color: $border-color;
-
-                    .answer {
-                        color: $highlight-color;
-                    }
-                }
-
-                .btn {
-                    margin-top: 1.5rem;
                 }
             }
         }
