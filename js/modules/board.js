@@ -4,20 +4,25 @@ const Board = (() => {
     let lives = null;
     let canvas;
     let c;
+    let testArray = []
 
     const init = () => {
         canvas = document.querySelector(".hangman-board")
         c = canvas.getContext("2d")
         c.lineWidth = 2
         c.strokeStyle = "#c252df"
+        testArray = [line1, line2, line3]
         base();
     }
 
     const base = () => {
-        line1();
-        line2();
-        line3();
 
+        testArray.forEach(item => {
+            item();
+        })
+        // line1();
+        // line2();
+        // line3();
         //rope();
         // head();
         // torso();
@@ -50,7 +55,10 @@ const Board = (() => {
     const parts = [rightLeg, leftLeg, , rightArm, leftArm, torso, head, rope]
 
     const render = () => {
-        parts[lives]();
+        testArray.forEach(item => {
+            console.log(testArray)
+            item();
+        })
         
         //
         // head();
@@ -81,7 +89,25 @@ const Board = (() => {
 
     const setLives = newLives => {
         lives = newLives
-        render();
+        
+        switch(lives) {
+            case 6:
+                testArray.push(rope);
+            case 5:
+                testArray.push(head);
+            case 4:
+                testArray.push(torso);
+            case 3:
+                testArray.push(leftArm);
+            case 2:
+                testArray.push(rightArm);
+            case 1:
+                testArray.push(leftLeg);
+            case 0:
+                testArray.push(rightLeg);
+        }
+
+        render();   
     }
 
     return {
