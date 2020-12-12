@@ -10,6 +10,7 @@ const Home = (() => {
 
     // -- Initialize
     const init = () => {
+        Game.resetGame();
         render();
         listeners();
     }

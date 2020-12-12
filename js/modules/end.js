@@ -1,4 +1,5 @@
 import Game from './game.js'
+import {sound} from "../data/sound.js"
 
 const End = (() => {
 
@@ -19,6 +20,9 @@ const End = (() => {
 
         if (Game.state.lives > 0) {
             state.win = true;
+            sound.win.play();
+        } else {
+            sound.lose.play();
         }
 
         let markup = `

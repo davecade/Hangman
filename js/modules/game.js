@@ -64,6 +64,10 @@ const Game = (() => {
         End.state.win = false;
         Board.state.parts = []
         state.gameInProgress = true;
+        sound.win.pause();
+        sound.win.currentTime = 0
+        sound.lose.pause();
+        sound.lose.currentTime = 0;
     }
 
     const alreadySelected = letter => {
