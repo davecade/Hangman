@@ -24,7 +24,7 @@ const End = (() => {
         let markup = `
             <div class="end">
                 <h2 class="end-message">You ${state.win ? "Win" : "Lose"}!</h2>
-                <h2 class="answer">${state.win ? "" : "The answer is: "}${state.win ? "" : Game.state.answer.join("")}</h2>
+                <h2>${state.win ? "" : "The answer is:  "} <span class="answer">${state.win ? "" : Game.state.answer.join("")}</span></h2>
             </div>
         `
         $display.innerHTML = markup;
