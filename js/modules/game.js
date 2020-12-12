@@ -10,11 +10,23 @@ const Game = (() => {
 
     //-- Variables
     const alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-    const words = ['apple', 'cat', 'headphones', 'sanitizer']
+    let words = []
     let guessingWord
 
+    const getWords = async () => {
+        let response
+        $hangman.innerHTML = `
+            <div class="game">
+                <h1 class="title">LOADING...</h1>
+            </div>
+        `
+        response = await fetch("https://random-word-api.herokuapp.com/word?number=10")
+        return response.json()
+    }
+
     // -- Initialize
-    const init = () => {
+    const init = async () => {
+        words = await getWords();
         state.answer = words[Math.floor(Math.random() * words.length)].split("")
         guessingWord = Array(state.answer.length).fill('_')
         resetGame();
